@@ -34,11 +34,16 @@ class HiveStorage {
   }
 
   int getWaterData() {
-    Map<dynamic, dynamic> glassEntry = _waterBox.get(0);
-    if (glassEntry != null) {
-      return glassEntry['glasses'] ?? 0;
+    // Try to get the data from the box
+    Map<dynamic, dynamic>? glassEntry = _waterBox.get(0);
+
+    // If glassEntry is null, return 0
+    if (glassEntry == null) {
+      return 0;
     }
-    return 0;
+
+    // If glassEntry is not null, return the value of 'glasses' or 0 if it's null
+    return glassEntry['glasses'] ?? 0;
   }
 
   List<dynamic> retrieveEntries() {
