@@ -11,17 +11,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:mime/mime.dart';
 
 final model = genAi.GenerativeModel(
-  model: 'gemini-1.5-pro',
-  // safetySettings: [
-  //   genAi.SafetySetting(
-  //       genAi.HarmCategory.harassment, genAi.HarmBlockThreshold.none),
-  //   genAi.SafetySetting(
-  //       genAi.HarmCategory.hateSpeech, genAi.HarmBlockThreshold.none),
-  //   genAi.SafetySetting(
-  //       genAi.HarmCategory.sexuallyExplicit, genAi.HarmBlockThreshold.none),
-  //   genAi.SafetySetting(
-  //       genAi.HarmCategory.dangerousContent, genAi.HarmBlockThreshold.none),
-  // ],
+  model: 'gemini-2.0-flash',
   apiKey: '',
 );
 
@@ -69,7 +59,7 @@ class CustomGeminiModel with ChangeNotifier {
       notifyListeners();
 
       final model = genAi.GenerativeModel(
-        model: 'gemini-1.5-pro',
+        model: 'gemini-2.0-pro',
         apiKey: '',
       );
       final prompt = request;
@@ -123,6 +113,7 @@ class CustomGeminiModel with ChangeNotifier {
 
       // Send the user's message to the chat session
       final response = await chat.sendMessage(userMessage);
+      // converting the response to stream
 
       // Add the model's response to the history
       final modelMessage =
